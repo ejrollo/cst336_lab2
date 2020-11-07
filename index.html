@@ -30,8 +30,39 @@
                     if (!isFormValid()){
                         return;
                     }
+                    
+                    //variables
+                    let score = 0;
+                    let q1Response = $("#q1").val().toLowerCase();
+                    let q2Response = $("#q2").val();
+                    
+                    //question 1
+                    if(q1Response == "sacramento"){
+                        $("#q1Feedback").html("Correct!");
+                        $("#q1Feedback").attr("class", "bg-success text-white");
+                        $("#markImg1").html("<img src='img/checkmark.png' alt='checkmark'>");
+                        score += 20;
+                    } else{
+                        $("#q1Feedback").html("Incorrect!");
+                        $("#q1Feedback").attr("class", "bg-warning text-white");
+                        $("#markImg1").html("<img src='img/xmark.png' alt='xmark'>");
+                    }
+                    
+                    //question 2
+                    if(q2Response == "mo"){
+                        $("#q2Feedback").html("Correct!");
+                        $("#q2Feedback").attr("class", "bg-success text-white");
+                        $("#markImg2").html("<img src='img/checkmark.png' alt='checkmark'>");
+                        score += 20;
+                    } else{
+                        $("#q2Feedback").html("Incorrect!");
+                        $("#q2Feedback").attr("class", "bg-warning text-white");
+                        $("#markImg2").html("<img src='img/xmark.png' alt='xmark'>");
+                    }
+                    
+                    $("#totalScore").html(`Total Score: ${score}`);
                 }
-            })//ready
+            })
         </script>
     </head>
     <body class="text-center">
@@ -41,7 +72,19 @@
         <input type="text" id="q1">
         <br><br>
         <div id="q1Feedback"></div>
+        <br>
+        
+        <h3><span id="markImg2"></span>What is the longest river?</h3>
+        <select id="q2">
+            <option value="">Select One</option>
+            <option value="ms">Mississippi</option>
+            <option value="mo">Missouri</option>
+            <option value="co">Colorado</option>
+            <option value="de">Deleware</option>
+        </select>
         <br><br>
+        <div id="q2Feedback"></div>
+        
         <h3 id="validationFdbk" class="bg-danger text-white"></h3>
         <button type="button" class="btn btn-primary"> Submit Quiz </button>
         <br>
